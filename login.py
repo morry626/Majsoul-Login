@@ -6,6 +6,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from random import randint
 
 acccounts = int(len(sys.argv[1:])/2)
 print(f'Config {acccounts} accounts')
@@ -66,7 +67,9 @@ for i in range(acccounts):
         .click()\
         .perform()
     print(f'Account {i+1} entering game...')
-    sleep(60)  # loading...
+    delay = randint(60, 120)
+    print(f'Account {i+1} waiting {delay}s for monthly card...')
+    sleep(delay)
     print(f'Account {i+1} login completed')
 
     driver.quit()
