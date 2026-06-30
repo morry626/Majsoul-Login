@@ -66,7 +66,7 @@ for i in range(acccounts):
         .click()\
         .perform()
     print(f'Account {i+1} entering game...')
-    sleep(20)  # loading...
+    sleep(60)  # loading...
     print(f'Account {i+1} login completed')
 
     driver.quit()
