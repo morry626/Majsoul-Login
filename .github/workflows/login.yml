@@ -1,8 +1,8 @@
 name: Majsoul-Login
 on:
   workflow_dispatch:
-  schedule: #5:00
-   - cron: '0 21 * * *'
+  schedule: #15:00
+   - cron: '0 7 * * *'
 jobs:
   login:
     name: Majsoul-Login
@@ -13,6 +13,12 @@ jobs:
 
       - name: Install Selenium
         run: pip install selenium==4.17.2
+
+      - name: Random delay
+        run: |
+          delay=$(shuf -i 0-7200 -n 1)
+          echo "Wait ${delay}s before login"
+          sleep "$delay"
 
       - name: Majsoul login
         run: python login.py ${{ secrets.EMAIL }} ${{ secrets.PASSWD }}
